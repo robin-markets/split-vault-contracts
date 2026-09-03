@@ -1,0 +1,32 @@
+[profile.default]
+solc_version="0.8.31"
+src = "src"
+out = "out"
+libs = ["lib"]
+
+optimizer = true
+optimizer_runs = 100000000
+ffi = true
+# Required by openzeppelin-foundry-upgrades' upgrade-safety validations
+ast = true
+build_info = true
+extra_output = ["storageLayout"]
+
+[lint]
+# Ignore the entire lib folder
+ignore = ["lib/*"]
+exclude_lints = ["unwrapped-modifier-logic"]
+
+[rpc_endpoints]
+polygon = "${POLYGON_RPC_URL}"
+
+[etherscan]
+polygon = { key = "${ETHERSCAN_API_KEY}", chain = 137 }
+
+[fmt]
+line_length = 150
+quote_style = 'single'
+single_line_statement_blocks = 'preserve'
+bracket_spacing = true
+
+# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
